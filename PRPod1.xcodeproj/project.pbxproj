@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E30B844D14ACED8B00F0D315 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30B844C14ACED8B00F0D315 /* UIKit.framework */; };
+		E30B844F14ACED8B00F0D315 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30B844E14ACED8B00F0D315 /* Foundation.framework */; };
+		E30B845114ACED8B00F0D315 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30B845014ACED8B00F0D315 /* CoreGraphics.framework */; };
+		E30B845714ACED8B00F0D315 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E30B845514ACED8B00F0D315 /* InfoPlist.strings */; };
+		E30B845914ACED8B00F0D315 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E30B845814ACED8B00F0D315 /* main.m */; };
+		E30B845D14ACED8B00F0D315 /* PRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E30B845C14ACED8B00F0D315 /* PRAppDelegate.m */; };
+		E30B846014ACED8B00F0D315 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E30B845E14ACED8B00F0D315 /* MainStoryboard.storyboard */; };
+		E30B846314ACED8B00F0D315 /* PRFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E30B846214ACED8B00F0D315 /* PRFirstViewController.m */; };
+		E30B846514ACED8B00F0D315 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = E30B846414ACED8B00F0D315 /* first.png */; };
+		E30B846714ACED8B00F0D315 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E30B846614ACED8B00F0D315 /* first@2x.png */; };
+		E30B846A14ACED8B00F0D315 /* PRSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E30B846914ACED8B00F0D315 /* PRSecondViewController.m */; };
+		E30B846C14ACED8B00F0D315 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = E30B846B14ACED8B00F0D315 /* second.png */; };
+		E30B846E14ACED8B00F0D315 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E30B846D14ACED8B00F0D315 /* second@2x.png */; };
+		E30B847614ACED8B00F0D315 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30B847514ACED8B00F0D315 /* SenTestingKit.framework */; };
+		E30B847714ACED8B00F0D315 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30B844C14ACED8B00F0D315 /* UIKit.framework */; };
+		E30B847814ACED8B00F0D315 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30B844E14ACED8B00F0D315 /* Foundation.framework */; };
+		E30B848014ACED8B00F0D315 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E30B847E14ACED8B00F0D315 /* InfoPlist.strings */; };
+		E30B848314ACED8B00F0D315 /* PRPod1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E30B848214ACED8B00F0D315 /* PRPod1Tests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E30B847914ACED8B00F0D315 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E30B843F14ACED8B00F0D315 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E30B844714ACED8B00F0D315;
+			remoteInfo = PRPod1;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E30B844814ACED8B00F0D315 /* PRPod1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PRPod1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E30B844C14ACED8B00F0D315 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E30B844E14ACED8B00F0D315 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E30B845014ACED8B00F0D315 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E30B845414ACED8B00F0D315 /* PRPod1-Info.plist */ = {isa = PBXFileReference; path = "PRPod1-Info.plist"; sourceTree = "<group>"; };
+		E30B845614ACED8B00F0D315 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E30B845814ACED8B00F0D315 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E30B845A14ACED8B00F0D315 /* PRPod1-Prefix.pch */ = {isa = PBXFileReference; path = "PRPod1-Prefix.pch"; sourceTree = "<group>"; };
+		E30B845B14ACED8B00F0D315 /* PRAppDelegate.h */ = {isa = PBXFileReference; path = PRAppDelegate.h; sourceTree = "<group>"; };
+		E30B845C14ACED8B00F0D315 /* PRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRAppDelegate.m; sourceTree = "<group>"; };
+		E30B845F14ACED8B00F0D315 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		E30B846114ACED8B00F0D315 /* PRFirstViewController.h */ = {isa = PBXFileReference; path = PRFirstViewController.h; sourceTree = "<group>"; };
+		E30B846214ACED8B00F0D315 /* PRFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRFirstViewController.m; sourceTree = "<group>"; };
+		E30B846414ACED8B00F0D315 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		E30B846614ACED8B00F0D315 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		E30B846814ACED8B00F0D315 /* PRSecondViewController.h */ = {isa = PBXFileReference; path = PRSecondViewController.h; sourceTree = "<group>"; };
+		E30B846914ACED8B00F0D315 /* PRSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRSecondViewController.m; sourceTree = "<group>"; };
+		E30B846B14ACED8B00F0D315 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		E30B846D14ACED8B00F0D315 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		E30B847414ACED8B00F0D315 /* PRPod1Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PRPod1Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E30B847514ACED8B00F0D315 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		E30B847D14ACED8B00F0D315 /* PRPod1Tests-Info.plist */ = {isa = PBXFileReference; path = "PRPod1Tests-Info.plist"; sourceTree = "<group>"; };
+		E30B847F14ACED8B00F0D315 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E30B848114ACED8B00F0D315 /* PRPod1Tests.h */ = {isa = PBXFileReference; path = PRPod1Tests.h; sourceTree = "<group>"; };
+		E30B848214ACED8B00F0D315 /* PRPod1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRPod1Tests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E30B844514ACED8B00F0D315 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E30B844D14ACED8B00F0D315 /* UIKit.framework in Frameworks */,
+				E30B844F14ACED8B00F0D315 /* Foundation.framework in Frameworks */,
+				E30B845114ACED8B00F0D315 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E30B847014ACED8B00F0D315 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E30B847614ACED8B00F0D315 /* SenTestingKit.framework in Frameworks */,
+				E30B847714ACED8B00F0D315 /* UIKit.framework in Frameworks */,
+				E30B847814ACED8B00F0D315 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E30B843D14ACED8B00F0D315 = {
+			isa = PBXGroup;
+			children = (
+				E30B845214ACED8B00F0D315 /* PRPod1 */,
+				E30B847B14ACED8B00F0D315 /* PRPod1Tests */,
+				E30B844B14ACED8B00F0D315 /* Frameworks */,
+				E30B844914ACED8B00F0D315 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E30B844914ACED8B00F0D315 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E30B844814ACED8B00F0D315 /* PRPod1.app */,
+				E30B847414ACED8B00F0D315 /* PRPod1Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E30B844B14ACED8B00F0D315 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E30B844C14ACED8B00F0D315 /* UIKit.framework */,
+				E30B844E14ACED8B00F0D315 /* Foundation.framework */,
+				E30B845014ACED8B00F0D315 /* CoreGraphics.framework */,
+				E30B847514ACED8B00F0D315 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E30B845214ACED8B00F0D315 /* PRPod1 */ = {
+			isa = PBXGroup;
+			children = (
+				E30B845B14ACED8B00F0D315 /* PRAppDelegate.h */,
+				E30B845C14ACED8B00F0D315 /* PRAppDelegate.m */,
+				E30B845E14ACED8B00F0D315 /* MainStoryboard.storyboard */,
+				E30B846114ACED8B00F0D315 /* PRFirstViewController.h */,
+				E30B846214ACED8B00F0D315 /* PRFirstViewController.m */,
+				E30B846414ACED8B00F0D315 /* first.png */,
+				E30B846614ACED8B00F0D315 /* first@2x.png */,
+				E30B846814ACED8B00F0D315 /* PRSecondViewController.h */,
+				E30B846914ACED8B00F0D315 /* PRSecondViewController.m */,
+				E30B846B14ACED8B00F0D315 /* second.png */,
+				E30B846D14ACED8B00F0D315 /* second@2x.png */,
+				E30B845314ACED8B00F0D315 /* Supporting Files */,
+			);
+			path = PRPod1;
+			sourceTree = "<group>";
+		};
+		E30B845314ACED8B00F0D315 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E30B845414ACED8B00F0D315 /* PRPod1-Info.plist */,
+				E30B845514ACED8B00F0D315 /* InfoPlist.strings */,
+				E30B845814ACED8B00F0D315 /* main.m */,
+				E30B845A14ACED8B00F0D315 /* PRPod1-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E30B847B14ACED8B00F0D315 /* PRPod1Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E30B848114ACED8B00F0D315 /* PRPod1Tests.h */,
+				E30B848214ACED8B00F0D315 /* PRPod1Tests.m */,
+				E30B847C14ACED8B00F0D315 /* Supporting Files */,
+			);
+			path = PRPod1Tests;
+			sourceTree = "<group>";
+		};
+		E30B847C14ACED8B00F0D315 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E30B847D14ACED8B00F0D315 /* PRPod1Tests-Info.plist */,
+				E30B847E14ACED8B00F0D315 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E30B844714ACED8B00F0D315 /* PRPod1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E30B848614ACED8B00F0D315 /* Build configuration list for PBXNativeTarget "PRPod1" */;
+			buildPhases = (
+				E30B844414ACED8B00F0D315 /* Sources */,
+				E30B844514ACED8B00F0D315 /* Frameworks */,
+				E30B844614ACED8B00F0D315 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PRPod1;
+			productName = PRPod1;
+			productReference = E30B844814ACED8B00F0D315 /* PRPod1.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E30B847314ACED8B00F0D315 /* PRPod1Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E30B848914ACED8B00F0D315 /* Build configuration list for PBXNativeTarget "PRPod1Tests" */;
+			buildPhases = (
+				E30B846F14ACED8B00F0D315 /* Sources */,
+				E30B847014ACED8B00F0D315 /* Frameworks */,
+				E30B847114ACED8B00F0D315 /* Resources */,
+				E30B847214ACED8B00F0D315 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E30B847A14ACED8B00F0D315 /* PBXTargetDependency */,
+			);
+			name = PRPod1Tests;
+			productName = PRPod1Tests;
+			productReference = E30B847414ACED8B00F0D315 /* PRPod1Tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E30B843F14ACED8B00F0D315 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = E30B844214ACED8B00F0D315 /* Build configuration list for PBXProject "PRPod1" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E30B843D14ACED8B00F0D315;
+			productRefGroup = E30B844914ACED8B00F0D315 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E30B844714ACED8B00F0D315 /* PRPod1 */,
+				E30B847314ACED8B00F0D315 /* PRPod1Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E30B844614ACED8B00F0D315 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E30B845714ACED8B00F0D315 /* InfoPlist.strings in Resources */,
+				E30B846014ACED8B00F0D315 /* MainStoryboard.storyboard in Resources */,
+				E30B846514ACED8B00F0D315 /* first.png in Resources */,
+				E30B846714ACED8B00F0D315 /* first@2x.png in Resources */,
+				E30B846C14ACED8B00F0D315 /* second.png in Resources */,
+				E30B846E14ACED8B00F0D315 /* second@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E30B847114ACED8B00F0D315 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E30B848014ACED8B00F0D315 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E30B847214ACED8B00F0D315 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E30B844414ACED8B00F0D315 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E30B845914ACED8B00F0D315 /* main.m in Sources */,
+				E30B845D14ACED8B00F0D315 /* PRAppDelegate.m in Sources */,
+				E30B846314ACED8B00F0D315 /* PRFirstViewController.m in Sources */,
+				E30B846A14ACED8B00F0D315 /* PRSecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E30B846F14ACED8B00F0D315 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E30B848314ACED8B00F0D315 /* PRPod1Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E30B847A14ACED8B00F0D315 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E30B844714ACED8B00F0D315 /* PRPod1 */;
+			targetProxy = E30B847914ACED8B00F0D315 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E30B845514ACED8B00F0D315 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E30B845614ACED8B00F0D315 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E30B845E14ACED8B00F0D315 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E30B845F14ACED8B00F0D315 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		E30B847E14ACED8B00F0D315 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E30B847F14ACED8B00F0D315 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E30B848414ACED8B00F0D315 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E30B848514ACED8B00F0D315 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E30B848714ACED8B00F0D315 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PRPod1/PRPod1-Prefix.pch";
+				INFOPLIST_FILE = "PRPod1/PRPod1-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E30B848814ACED8B00F0D315 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PRPod1/PRPod1-Prefix.pch";
+				INFOPLIST_FILE = "PRPod1/PRPod1-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E30B848A14ACED8B00F0D315 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PRPod1.app/PRPod1";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PRPod1/PRPod1-Prefix.pch";
+				INFOPLIST_FILE = "PRPod1Tests/PRPod1Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		E30B848B14ACED8B00F0D315 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PRPod1.app/PRPod1";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PRPod1/PRPod1-Prefix.pch";
+				INFOPLIST_FILE = "PRPod1Tests/PRPod1Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E30B844214ACED8B00F0D315 /* Build configuration list for PBXProject "PRPod1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E30B848414ACED8B00F0D315 /* Debug */,
+				E30B848514ACED8B00F0D315 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E30B848614ACED8B00F0D315 /* Build configuration list for PBXNativeTarget "PRPod1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E30B848714ACED8B00F0D315 /* Debug */,
+				E30B848814ACED8B00F0D315 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E30B848914ACED8B00F0D315 /* Build configuration list for PBXNativeTarget "PRPod1Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E30B848A14ACED8B00F0D315 /* Debug */,
+				E30B848B14ACED8B00F0D315 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E30B843F14ACED8B00F0D315 /* Project object */;
+}
