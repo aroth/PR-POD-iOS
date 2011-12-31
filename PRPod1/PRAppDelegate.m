@@ -11,10 +11,24 @@
 @implementation PRAppDelegate
 
 @synthesize window = _window;
+@synthesize powerSongs, player, timer;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    self.powerSongs = [[NSMutableArray alloc]init];
+    self.player = [MPMusicPlayerController iPodMusicPlayer];
+    
+    if( [defaults objectForKey:@"powerSongs"] == nil ){
+        [defaults setObject:[[NSArray alloc]init] forKey:@"powerSongs"];
+        [defaults synchronize];
+    }
+    
+    self.powerSongs = [[NSMutableArray alloc]initWithArray:[defaults arrayForKey:@"powerSongs"]];
+    
+    [self.player stop];
+    
     return YES;
 }
 							
@@ -28,6 +42,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    [[NSUserDefaults standardUserDefaults] synchronize];
     /*
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
@@ -50,6 +65,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+     [[NSUserDefaults standardUserDefaults] synchronize];
     /*
      Called when the application is about to terminate.
      Save data if appropriate.

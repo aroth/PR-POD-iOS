@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MediaPlayer/MPMusicPlayerController.h"
 
-@interface PRAppDelegate : UIResponder <UIApplicationDelegate>
+@interface PRAppDelegate : UIResponder <UIApplicationDelegate> {
+    NSTimer *timer;
+    NSMutableArray *powerSongs;
+    MPMusicPlayerController *player;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) MPMusicPlayerController *player;
+@property (nonatomic, strong) NSMutableArray *powerSongs;
 
 @end
