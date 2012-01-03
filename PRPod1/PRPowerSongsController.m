@@ -8,6 +8,8 @@
 
 #import "PRPowerSongsController.h"
 #import "PRAppDelegate.h"
+#import "PRHookEditorController.h"
+#import "PowersongCell.h"
 
 @implementation PRPowerSongsController
 @synthesize tableView;
@@ -79,46 +81,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    static NSString *CellIdentifier = @"songCell";
-    
-    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-    }
-    
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    [button addTarget:self action:@selector(aMethod:)
-//     forControlEvents:UIControlEventTouchDown];
-//    [button setTitle:@"Show View" forState:UIControlStateNormal];
-//    button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
-//    //[cell addSubview:button];
-//    //  [cell.detailTextLabel addSubview:button];
-//    // Configure the cell.
-//    
-//    cell.songLabel.text = [NSString stringWithFormat:@"%@ - %@", [[self.results objectAtIndex:indexPath.row] valueForProperty: MPMediaItemPropertyArtist], [[self.results objectAtIndex:indexPath.row] valueForProperty: MPMediaItemPropertyTitle] ]; 
-//    cell.detailTextLabel.text = @"TEST";
-//    
-//    cell.playButton.tag = indexPath.row;
-//    cell.addButton.tag = indexPath.row;
-//    cell.playButton.titleLabel.text = @">";
-//    
-//    [cell.playButton addTarget:self action:@selector(clicky:) forControlEvents:UIControlEventTouchDown];
-//    [cell.addButton  addTarget:self action:@selector(add:) forControlEvents:UIControlEventTouchDown];
-//    
-    //    [[[cell subviews] objectAtIndex:0] setTitle:@"XX"];
+
+    PowersongCell *cell = [tableView 
+                             dequeueReusableCellWithIdentifier:@"PowersongCell"];
     
     NSString *powerSongString = [[NSString alloc]initWithFormat:@"%@ - %@",[[delegate.powerSongs objectAtIndex:indexPath.row] objectForKey:@"artist"], [[delegate.powerSongs objectAtIndex:indexPath.row] objectForKey:@"title"]];
-    cell.textLabel.text = powerSongString;
+    cell.songLabel.text = powerSongString;
+  //  cell.song = [delegate.powerSongs objectAtIndex:indexPath.row];
     
     return cell;
     
 }
 
 // Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return YES if you want the specified item to be editable.
-    return YES;
-}
+ //   return NO;
+//}
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+    //  DLAppDelegate *ad = [[UIApplication sharedApplication] delegate];
+    //   [ad.workout setValue:[[searchData objectAtIndex:indexPath.row] objectForKey:@"name"] forKey:@"where"];
+    //    [self.navigationController popViewControllerAnimated:YES];
+    
+  //  NSLog(@"GOT HERE...?");
+//}
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -141,6 +129,36 @@
         // IF SONG IS PLAYING, STOP IT
     }    
 }
+
+#pragma mark - Segue methods
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    
+    if( [[segue identifier] isEqualToString:@"EditHookSegue"] ){
+        PRHookEditorController *vc = segue.destinationViewController;
+        NSDictionary *song = [delegate.powerSongs objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+            
+        MPMediaQuery *query = [MPMediaQuery songsQuery];   
+        [query addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:[song objectForKey:@"persistentID"] forProperty:MPMediaItemPropertyPersistentID comparisonType:MPMediaPredicateComparisonEqualTo]];
+        [query setGroupingType:MPMediaGroupingTitle];
+            
+     
+        if( [query.items count] > 0 ){
+            [vc setDelegate:self];
+            [vc setSong:[query.items objectAtIndex:0]];
+        }else{
+            NSLog(@"COULD NOT FIND SONG IN LIBRARY FOR %@", song);
+        }
+            //    [vc setSong:
+    }   
+    
+    
+    
+    //[vc setSong:[delegate.player nowPlayingItem]];
+   // [segue.destinationViewController setSong:@"s"];
+}
+
 
 
 @end

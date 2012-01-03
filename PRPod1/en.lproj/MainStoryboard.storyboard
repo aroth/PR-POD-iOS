@@ -20,8 +20,9 @@
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2sf-IQ-ME2">
                                 <rect key="frame" x="52" y="128" width="217" height="214"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="t_btn_red.png">
+                                <state key="normal" image="t_red_4.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -30,6 +31,7 @@
                                 </state>
                                 <connections>
                                     <action selector="touchPowerButton:" destination="2" eventType="touchUpInside" id="P8U-gX-bw6"/>
+                                    <outletCollection property="gestureRecognizers" destination="r5C-bL-BcV" appends="YES" id="Cet-no-TQT"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="screen4.png" id="0cQ-gF-esQ">
@@ -45,7 +47,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PR Pod" textAlignment="right" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" minimumFontSize="10" id="tmp-Rp-xhu">
-                                <rect key="frame" x="293" y="52" width="251" height="43"/>
+                                <rect key="frame" x="293" y="51" width="251" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -57,7 +59,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="top" image="blk_right.png" id="vLx-ne-EA8">
-                                <rect key="frame" x="192" y="0.0" width="240" height="128"/>
+                                <rect key="frame" x="191" y="0.0" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Guw-nJ-bP7">
@@ -113,10 +115,16 @@
                         <outlet property="bgImage" destination="l7Z-iF-Z8R" id="ZXR-I2-eNj"/>
                         <outlet property="bgLeft" destination="pwn-ZU-va5" id="oAg-Uv-6l9"/>
                         <outlet property="bgRight" destination="vLx-ne-EA8" id="bOn-Ib-ZX0"/>
+                        <outlet property="grec" destination="r5C-bL-BcV" id="k7N-J6-cbu"/>
                         <outlet property="powerButton" destination="2sf-IQ-ME2" id="s4j-Vm-nED"/>
                         <outlet property="songLabel" destination="tmp-Rp-xhu" id="Bww-qi-bne"/>
                     </connections>
                 </viewController>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="r5C-bL-BcV">
+                    <connections>
+                        <action selector="grec_event:" destination="2" id="uVa-os-htg"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="353" y="-402"/>
         </scene>
@@ -222,7 +230,7 @@
         <scene sceneID="13">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
-                <viewController title="Second" id="3" customClass="PRSecondViewController" sceneMemberID="viewController">
+                <viewController title="Second" id="3" customClass="PRSettingsController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -231,13 +239,232 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="1hV-zz-L09">
+                                <rect key="frame" x="217" y="121" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="onTintColor" red="0.9591836735" green="0.043534380339999998" blue="0.053943182280000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="toggleSetting:" destination="3" eventType="valueChanged" id="QDK-ih-VWY"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Theme" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="AAX-Lk-1Ug">
+                                <rect key="frame" x="40" y="168" width="125" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Play Songs" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="oOv-Oq-g9g">
+                                <rect key="frame" x="40" y="82" width="125" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Play Hooks" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="FWS-Oh-2UX">
+                                <rect key="frame" x="40" y="124" width="125" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="vFD-1e-7FK">
+                                <rect key="frame" x="217" y="35" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="onTintColor" red="0.9591836735" green="0.043534380339999998" blue="0.053943182280000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="toggleSetting:" destination="3" eventType="valueChanged" id="TMt-jI-Mpo"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Play Continuous" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="5vZ-Pa-sxO">
+                                <rect key="frame" x="40" y="38" width="125" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Wood" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="Nko-2m-T8L">
+                                <rect key="frame" x="199" y="163" width="97" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="NAd-sU-AKT">
+                                <rect key="frame" x="217" y="79" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="onTintColor" red="0.9591836735" green="0.043534380339999998" blue="0.053943182280000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="toggleSetting:" destination="3" eventType="valueChanged" id="QeQ-0h-gbK"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="158-wrench-2.png" id="6"/>
+                    <connections>
+                        <outlet property="playContinuousSwitch" destination="vFD-1e-7FK" id="zTC-M9-NCP"/>
+                        <outlet property="playHooksSwitch" destination="1hV-zz-L09" id="4DM-wf-oUg"/>
+                        <outlet property="playSongsSwitch" destination="NAd-sU-AKT" id="0Do-Xv-6o9"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="353" y="178"/>
+        </scene>
+        <scene sceneID="0UN-XK-pSK">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SXp-QY-NfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="32a-kn-ToN" customClass="PRHookEditorController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tax-se-sMw">
+                        <rect key="frame" x="0.0" y="44" width="320" height="387"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Van Halen" lineBreakMode="tailTruncation" minimumFontSize="10" id="fHH-dV-KWm">
+                                <rect key="frame" x="20" y="17" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Right Now" lineBreakMode="tailTruncation" minimumFontSize="10" id="LlH-1S-rul">
+                                <rect key="frame" x="20" y="37" width="280" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="aQt-av-92l">
+                                <rect key="frame" x="20" y="77" width="280" height="9"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vyv-PD-YFt">
+                                <rect key="frame" x="144" y="94" width="33" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title=">">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapPlay:" destination="32a-kn-ToN" eventType="touchUpInside" id="uId-kR-zA5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JcL-zZ-eo4">
+                                <rect key="frame" x="35" y="312" width="97" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Play Hook">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapPlayHook:" destination="32a-kn-ToN" eventType="touchUpInside" id="6Ty-BS-I3O"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lb5-Ww-VfW">
+                                <rect key="frame" x="181" y="312" width="101" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Save Hook">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapSaveHook:" destination="32a-kn-ToN" eventType="touchUpInside" id="xc1-xs-lhx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="R30-nR-gTP">
+                                <rect key="frame" x="96" y="94" width="42" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="&lt;&lt;">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uTJ-2T-4KD">
+                                <rect key="frame" x="183" y="94" width="42" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title=">>">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2oG-ch-dlT">
+                                <rect key="frame" x="17" y="175" width="87" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Set Start">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapSetStart:" destination="32a-kn-ToN" eventType="touchUpInside" id="Skp-fw-XRl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hUX-yM-yT6">
+                                <rect key="frame" x="17" y="220" width="87" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Set End">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapSetEnd:" destination="32a-kn-ToN" eventType="touchUpInside" id="dgQ-ZG-Gue"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="76.7" borderStyle="roundedRect" minimumFontSize="17" id="qu5-b0-0fH">
+                                <rect key="frame" x="203" y="178" width="97" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="138.4" borderStyle="roundedRect" minimumFontSize="17" id="ZT2-Vv-cbl">
+                                <rect key="frame" x="203" y="220" width="97" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Hook Editor" id="FlT-zr-K12"/>
+                    <connections>
+                        <outlet property="artistLabel" destination="fHH-dV-KWm" id="HEM-at-VSW"/>
+                        <outlet property="endTimeText" destination="ZT2-Vv-cbl" id="B0Z-pj-CEq"/>
+                        <outlet property="playButton" destination="vyv-PD-YFt" id="bHN-NP-FOq"/>
+                        <outlet property="playHookButton" destination="JcL-zZ-eo4" id="joR-Eu-hxj"/>
+                        <outlet property="saveHookButton" destination="Lb5-Ww-VfW" id="O0H-Vn-oz9"/>
+                        <outlet property="setEndButton" destination="hUX-yM-yT6" id="DN5-Aw-S7U"/>
+                        <outlet property="setStartButton" destination="2oG-ch-dlT" id="4IW-yl-Ri4"/>
+                        <outlet property="startTimeText" destination="qu5-b0-0fH" id="wlA-bD-qdl"/>
+                        <outlet property="titleLabel" destination="LlH-1S-rul" id="8VV-kh-N9A"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1263" y="506"/>
         </scene>
         <scene sceneID="WGX-wK-nf3">
             <objects>
@@ -252,14 +479,27 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dew-QT-a1N">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PowersongCell" editingAccessoryType="disclosureIndicator" id="dew-QT-a1N" customClass="PowersongCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="rfz-oa-8Bt">
+                                                    <rect key="frame" x="20" y="2" width="280" height="41"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <outlet property="songLabel" destination="rfz-oa-8Bt" id="nPi-2D-cAx"/>
+                                            <segue destination="32a-kn-ToN" kind="push" identifier="EditHookSegue" id="aPo-QB-qOB"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -273,7 +513,7 @@
                     <navigationItem key="navigationItem" title="Power Songs" id="pEL-Do-nkH">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="vu0-ck-YMJ">
                             <connections>
-                                <segue destination="XCg-yb-VpN" kind="push" id="ScN-dG-ab5"/>
+                                <segue destination="XCg-yb-VpN" kind="push" identifier="AddSongSegue" id="ScN-dG-ab5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -283,6 +523,104 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="732" y="767"/>
+        </scene>
+        <scene sceneID="0rN-TQ-EgB">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tkB-ya-sZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="ml3-8y-ARp" customClass="PRPowerHooksController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NxH-SO-7FD">
+                        <rect key="frame" x="0.0" y="44" width="320" height="387"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="43" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ky5-cU-h6E">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="387"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HookCell" rowHeight="43" id="3LU-wO-wYg" customClass="HookCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="3 Doors Down" lineBreakMode="tailTruncation" minimumFontSize="10" id="oH9-wj-8yz">
+                                                    <rect key="frame" x="40" y="1" width="188" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0:30 - 0:59" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="Q8v-xc-Z38">
+                                                    <rect key="frame" x="216" y="1" width="84" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Race For The Sun" lineBreakMode="tailTruncation" minimumFontSize="10" id="tOZ-UX-rQr">
+                                                    <rect key="frame" x="40" y="17" width="280" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Hk-Ny-DMT">
+                                                    <rect key="frame" x="7" y="6" width="25" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title=">">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="pressPlay:" destination="3LU-wO-wYg" eventType="touchUpInside" id="4ZH-az-jax"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="artistLabel" destination="oH9-wj-8yz" id="AI8-VZ-80V"/>
+                                            <outlet property="playButton" destination="5Hk-Ny-DMT" id="9Av-zF-Nrt"/>
+                                            <outlet property="rangeLabel" destination="Q8v-xc-Z38" id="ZPO-Db-Cu5"/>
+                                            <outlet property="titleLabel" destination="tOZ-UX-rQr" id="5ZI-rQ-gp0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ml3-8y-ARp" id="OsL-yT-kBe"/>
+                                    <outlet property="delegate" destination="ml3-8y-ARp" id="EHl-MX-olx"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Power Hooks" id="gE8-MM-0f4"/>
+                    <connections>
+                        <outlet property="tableView" destination="Ky5-cU-h6E" id="J4H-rj-Q0v"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="734" y="1470"/>
+        </scene>
+        <scene sceneID="zIi-Z8-hwt">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BoR-yc-JiF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="cbi-ak-TuM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Hooks" image="65-note.png" id="tQv-fH-JWn"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="HpN-lX-g8E">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ml3-8y-ARp" kind="relationship" relationship="rootViewController" id="yAN-2U-5Fr"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="341" y="1476"/>
         </scene>
         <scene sceneID="sX4-u9-c2L">
             <objects>
@@ -368,7 +706,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1147" y="767"/>
+            <point key="canvasLocation" x="1263" y="1095"/>
         </scene>
         <scene sceneID="QA7-cA-lEw">
             <objects>
@@ -399,6 +737,7 @@
                     <connections>
                         <segue destination="2" kind="relationship" relationship="viewControllers" id="26"/>
                         <segue destination="kwG-oP-ySb" kind="relationship" relationship="viewControllers" id="8Zj-mL-H18"/>
+                        <segue destination="cbi-ak-TuM" kind="relationship" relationship="viewControllers" id="P7D-ee-ssc"/>
                         <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
                     </connections>
                 </tabBarController>
@@ -410,6 +749,7 @@
         <image name="158-wrench-2.png" width="22" height="22"/>
         <image name="194-note-2.png" width="23" height="23"/>
         <image name="61-brightness.png" width="20" height="20"/>
+        <image name="65-note.png" width="15" height="24"/>
         <image name="blk_left.png" width="38" height="110"/>
         <image name="blk_right.png" width="37" height="114"/>
         <image name="diamond_plate.png" width="640" height="1024"/>
@@ -420,14 +760,49 @@
         <image name="red_btn_elec.png" width="271" height="266"/>
         <image name="screen4.png" width="285" height="40"/>
         <image name="speaker2.png" width="267" height="266"/>
-        <image name="t_btn_red.png" width="180" height="182"/>
+        <image name="t_red_4.png" width="180" height="182"/>
     </resources>
     <classes>
+        <class className="HookCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HookCell.h"/>
+            <relationships>
+                <relationship kind="action" name="pressPlay:"/>
+                <relationship kind="outlet" name="artistLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rangeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="PRClassicBoxController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PRClassicBoxController.h"/>
             <relationships>
                 <relationship kind="action" name="tapPowerButtonLeftBottom:"/>
                 <relationship kind="outlet" name="powerButtonLeftBottom" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="PRHookEditorController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PRHookEditorController.h"/>
+            <relationships>
+                <relationship kind="action" name="tapPlay:"/>
+                <relationship kind="action" name="tapPlayHook:"/>
+                <relationship kind="action" name="tapSaveHook:"/>
+                <relationship kind="action" name="tapSetEnd:"/>
+                <relationship kind="action" name="tapSetStart:"/>
+                <relationship kind="outlet" name="artistLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="endTimeText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="playHookButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="saveHookButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="setEndButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="setStartButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="startTimeText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PRPowerHooksController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PRPowerHooksController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="PRPowerPodController" superclassName="UIViewController">
@@ -439,6 +814,7 @@
                 <relationship kind="outlet" name="bgRight" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="block" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="grec" candidateClass="UILongPressGestureRecognizer"/>
                 <relationship kind="outlet" name="powerButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="songLabel" candidateClass="UILabel"/>
             </relationships>
@@ -449,8 +825,14 @@
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
-        <class className="PRSecondViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PRSecondViewController.h"/>
+        <class className="PRSettingsController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PRSettingsController.h"/>
+            <relationships>
+                <relationship kind="action" name="toggleSetting:"/>
+                <relationship kind="outlet" name="playContinuousSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="playHooksSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="playSongsSwitch" candidateClass="UISwitch"/>
+            </relationships>
         </class>
         <class className="PRSongSearchController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PRSongSearchController.h"/>
@@ -458,6 +840,12 @@
                 <relationship kind="outlet" name="results" candidateClass="NSArray"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="PowersongCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PowersongCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="songLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="SongCell" superclassName="UITableViewCell">

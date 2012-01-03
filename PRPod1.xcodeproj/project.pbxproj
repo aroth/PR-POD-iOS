@@ -68,6 +68,16 @@
 		E3BB59D714AE5AB6003F8107 /* 13-target.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BB59D614AE5AB6003F8107 /* 13-target.png */; };
 		E3BB59D914AE5AE9003F8107 /* 158-wrench-2.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BB59D814AE5AE9003F8107 /* 158-wrench-2.png */; };
 		E3BB59DB14AE5BE3003F8107 /* 61-brightness.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BB59DA14AE5BE3003F8107 /* 61-brightness.png */; };
+		E3BB59E214AF9408003F8107 /* PRHookEditorController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BB59E114AF9408003F8107 /* PRHookEditorController.m */; };
+		E3BB59E514AFA9CE003F8107 /* PRPowerHooksController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BB59E414AFA9CE003F8107 /* PRPowerHooksController.m */; };
+		E3CF985E14B1373C009D77C4 /* PowersongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CF985D14B1373C009D77C4 /* PowersongCell.m */; };
+		E3CF986214B1427B009D77C4 /* HookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CF986114B1427B009D77C4 /* HookCell.m */; };
+		E3CF987214B146F3009D77C4 /* NSDictionary+Song.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CF987114B146F3009D77C4 /* NSDictionary+Song.m */; };
+		E3CF987414B29AEB009D77C4 /* btn_red.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CF987314B29AEB009D77C4 /* btn_red.png */; };
+		E3CF987614B29C54009D77C4 /* red_btn_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CF987514B29C54009D77C4 /* red_btn_2.png */; };
+		E3CF987814B29D1C009D77C4 /* T_RED_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CF987714B29D1C009D77C4 /* T_RED_3.png */; };
+		E3CF987A14B29D42009D77C4 /* t_red_4.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CF987914B29D41009D77C4 /* t_red_4.png */; };
+		E3CF987D14B3314D009D77C4 /* PRSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CF987C14B3314C009D77C4 /* PRSettingsController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +163,22 @@
 		E3BB59D614AE5AB6003F8107 /* 13-target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "13-target.png"; sourceTree = "<group>"; };
 		E3BB59D814AE5AE9003F8107 /* 158-wrench-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "158-wrench-2.png"; sourceTree = "<group>"; };
 		E3BB59DA14AE5BE3003F8107 /* 61-brightness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "61-brightness.png"; sourceTree = "<group>"; };
+		E3BB59E014AF9408003F8107 /* PRHookEditorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRHookEditorController.h; sourceTree = "<group>"; };
+		E3BB59E114AF9408003F8107 /* PRHookEditorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRHookEditorController.m; sourceTree = "<group>"; };
+		E3BB59E314AFA9CD003F8107 /* PRPowerHooksController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRPowerHooksController.h; sourceTree = "<group>"; };
+		E3BB59E414AFA9CE003F8107 /* PRPowerHooksController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRPowerHooksController.m; sourceTree = "<group>"; };
+		E3CF985C14B1373C009D77C4 /* PowersongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowersongCell.h; sourceTree = "<group>"; };
+		E3CF985D14B1373C009D77C4 /* PowersongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowersongCell.m; sourceTree = "<group>"; };
+		E3CF986014B1427A009D77C4 /* HookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HookCell.h; sourceTree = "<group>"; };
+		E3CF986114B1427B009D77C4 /* HookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HookCell.m; sourceTree = "<group>"; };
+		E3CF987014B146F3009D77C4 /* NSDictionary+Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Song.h"; sourceTree = "<group>"; };
+		E3CF987114B146F3009D77C4 /* NSDictionary+Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Song.m"; sourceTree = "<group>"; };
+		E3CF987314B29AEB009D77C4 /* btn_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_red.png; sourceTree = "<group>"; };
+		E3CF987514B29C54009D77C4 /* red_btn_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_btn_2.png; sourceTree = "<group>"; };
+		E3CF987714B29D1C009D77C4 /* T_RED_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = T_RED_3.png; sourceTree = "<group>"; };
+		E3CF987914B29D41009D77C4 /* t_red_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = t_red_4.png; sourceTree = "<group>"; };
+		E3CF987B14B3314B009D77C4 /* PRSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRSettingsController.h; sourceTree = "<group>"; };
+		E3CF987C14B3314C009D77C4 /* PRSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRSettingsController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +244,8 @@
 		E30B845214ACED8B00F0D315 /* PRPod1 */ = {
 			isa = PBXGroup;
 			children = (
+				E3CF986714B14638009D77C4 /* Categories */,
+				E3CF986314B145A8009D77C4 /* Models */,
 				E30B84B214AD378C00F0D315 /* Cells */,
 				E30B84A714AD309B00F0D315 /* Controllers */,
 				E30B848C14ACED9E00F0D315 /* Assets */,
@@ -268,6 +296,10 @@
 		E30B848C14ACED9E00F0D315 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E3CF987914B29D41009D77C4 /* t_red_4.png */,
+				E3CF987714B29D1C009D77C4 /* T_RED_3.png */,
+				E3CF987514B29C54009D77C4 /* red_btn_2.png */,
+				E3CF987314B29AEB009D77C4 /* btn_red.png */,
 				E3BB59D414AE5AA2003F8107 /* 194-note-2.png */,
 				E3BB59D014AE5A29003F8107 /* 65-note.png */,
 				E3BB59C814AE4F0F003F8107 /* 1_led_green.png */,
@@ -319,6 +351,12 @@
 				E30B84B014AD321E00F0D315 /* PRSongSearchController.m */,
 				E34F259114AD720D00024E07 /* PRClassicBoxController.h */,
 				E34F259214AD720D00024E07 /* PRClassicBoxController.m */,
+				E3BB59E014AF9408003F8107 /* PRHookEditorController.h */,
+				E3BB59E114AF9408003F8107 /* PRHookEditorController.m */,
+				E3BB59E314AFA9CD003F8107 /* PRPowerHooksController.h */,
+				E3BB59E414AFA9CE003F8107 /* PRPowerHooksController.m */,
+				E3CF987B14B3314B009D77C4 /* PRSettingsController.h */,
+				E3CF987C14B3314C009D77C4 /* PRSettingsController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -328,8 +366,28 @@
 			children = (
 				E30B84B314AD37E000F0D315 /* SongCell.h */,
 				E30B84B414AD37E000F0D315 /* SongCell.m */,
+				E3CF985C14B1373C009D77C4 /* PowersongCell.h */,
+				E3CF985D14B1373C009D77C4 /* PowersongCell.m */,
+				E3CF986014B1427A009D77C4 /* HookCell.h */,
+				E3CF986114B1427B009D77C4 /* HookCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		E3CF986314B145A8009D77C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E3CF986714B14638009D77C4 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				E3CF987014B146F3009D77C4 /* NSDictionary+Song.h */,
+				E3CF987114B146F3009D77C4 /* NSDictionary+Song.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,6 +502,10 @@
 				E3BB59D714AE5AB6003F8107 /* 13-target.png in Resources */,
 				E3BB59D914AE5AE9003F8107 /* 158-wrench-2.png in Resources */,
 				E3BB59DB14AE5BE3003F8107 /* 61-brightness.png in Resources */,
+				E3CF987414B29AEB009D77C4 /* btn_red.png in Resources */,
+				E3CF987614B29C54009D77C4 /* red_btn_2.png in Resources */,
+				E3CF987814B29D1C009D77C4 /* T_RED_3.png in Resources */,
+				E3CF987A14B29D42009D77C4 /* t_red_4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +548,12 @@
 				E30B84B114AD321E00F0D315 /* PRSongSearchController.m in Sources */,
 				E30B84B514AD37E000F0D315 /* SongCell.m in Sources */,
 				E34F259314AD720D00024E07 /* PRClassicBoxController.m in Sources */,
+				E3BB59E214AF9408003F8107 /* PRHookEditorController.m in Sources */,
+				E3BB59E514AFA9CE003F8107 /* PRPowerHooksController.m in Sources */,
+				E3CF985E14B1373C009D77C4 /* PowersongCell.m in Sources */,
+				E3CF986214B1427B009D77C4 /* HookCell.m in Sources */,
+				E3CF987214B146F3009D77C4 /* NSDictionary+Song.m in Sources */,
+				E3CF987D14B3314D009D77C4 /* PRSettingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

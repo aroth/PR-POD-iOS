@@ -11,21 +11,43 @@
 @implementation PRAppDelegate
 
 @synthesize window = _window;
-@synthesize powerSongs, player, timer;
+@synthesize powerSongs, powerHooks, player, timer, currentTrack;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     self.powerSongs = [[NSMutableArray alloc]init];
+    self.powerHooks = [[NSMutableArray alloc]init];
+    
     self.player = [MPMusicPlayerController iPodMusicPlayer];
     
     if( [defaults objectForKey:@"powerSongs"] == nil ){
         [defaults setObject:[[NSArray alloc]init] forKey:@"powerSongs"];
-        [defaults synchronize];
     }
     
+    if( [defaults objectForKey:@"powerHooks"] == nil ){
+        [defaults setObject:[[NSArray alloc]init] forKey:@"powerHooks"];
+    }
+    
+    // Settings
+    if( [defaults objectForKey:@"settings_playContinuous"] == nil ){
+        NSLog(@"DEF1");
+        [defaults setBool:NO forKey:@"settings_playContinuous"];
+    }
+    if( [defaults objectForKey:@"settings_playSongs"] == nil ){
+        NSLog(@"DEF2");
+        [defaults setBool:YES forKey:@"settings_playSongs"];
+    }
+    if( [defaults objectForKey:@"settings_playHooks"] == nil ){
+        NSLog(@"DEF3");
+        [defaults setBool:NO forKey:@"settings_playHooks"];
+    }
+
+    [defaults synchronize];
+
     self.powerSongs = [[NSMutableArray alloc]initWithArray:[defaults arrayForKey:@"powerSongs"]];
+    self.powerHooks = [[NSMutableArray alloc]initWithArray:[defaults arrayForKey:@"powerHooks"]];
     
     [self.player stop];
     
@@ -71,6 +93,54 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+}
+
+
+- (void) playSong:(NSDictionary *)song {
+ 
+    
+    MPMediaQuery *query = [MPMediaQuery songsQuery];   
+    
+    [self.timer invalidate];
+    [self setCurrentTrack:song];
+    
+    
+    [query addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:[song objectForKey:@"persistentID"] forProperty:MPMediaItemPropertyPersistentID comparisonType:MPMediaPredicateComparisonEqualTo]];
+    [query setGroupingType:MPMediaGroupingTitle];
+ 
+    [self.player setQueueWithItemCollection:[[MPMediaItemCollection alloc] initWithItems:[NSArray arrayWithObject:[query.items objectAtIndex:0]]]];
+    
+    if( [song objectForKey:@"start"] != nil ){
+        // HOOK
+        [self.player setCurrentPlaybackTime:[[song objectForKey:@"start"] floatValue]];
+                
+        self.timer = [NSTimer scheduledTimerWithTimeInterval: 0.5
+                                                 target: self
+                                               selector: @selector(processHook)
+                                               userInfo: nil
+                                                repeats: YES];
+    }else{
+        // SONG
+        [self.player setCurrentPlaybackTime:0.0];
+    }
+    
+    
+    [self.player play];
+    
+}
+
+
+
+- (void) processHook {
+    if( [self.currentTrack objectForKey:@"stop"] != nil ){
+        //NSLog(@"FOUND HOOK %f vs %f", [self.player currentPlaybackTime], [[self.currentTrack objectForKey:@"stop"] floatValue]);
+        if( [self.player currentPlaybackTime] > [[self.currentTrack objectForKey:@"stop"] floatValue] ){
+            [self.timer invalidate];
+            [self.player stop];
+            // TODO: UPDATE SCROLL TEXT.... 
+            NSLog(@"HOOK DONE!!");
+        }
+    }
 }
 
 @end
