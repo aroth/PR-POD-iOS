@@ -149,15 +149,12 @@
         if( [self.player currentPlaybackTime] > [[self.currentTrack objectForKey:@"stop"] floatValue] ){
             [self.timer invalidate];
             [self.player stop];
-            // TODO: UPDATE SCROLL TEXT.... 
-           // if( [theTimer userInfo] ){
+
             if( block != nil ){
-                NSLog(@"DONE, NOW CALL BLOCK!! == %@", block);
                 block();
             }
             
             if( self.powerPodController != nil ){
-                NSLog(@"HERE WITH OBJ %@", self.powerPodController);
                 [self.powerPodController trackDone];
             }
             

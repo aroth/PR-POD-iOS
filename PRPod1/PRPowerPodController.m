@@ -145,10 +145,18 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 
 - (void)trackDone {
     PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    self.songIndex = -1;
-    [delegate.player stop];
-    [delegate.timer invalidate];    
-    [self scrollText:@""];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    // TODO //
+    if( [defaults boolForKey:@"settings_playContinuous"] == YES ){
+        [self playTrack];
+    }else{
+        self.songIndex = -1;
+        [delegate.player stop];
+        [delegate.timer invalidate];    
+        [self scrollText:@""];        
+    }
+    
 }
 
 - (void)playTrack {
