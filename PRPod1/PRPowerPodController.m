@@ -163,17 +163,39 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    if( [delegate.powerHooks count] == 0 ){
-        [self scrollText:@"NO POWER SONGS"];
+    
+    
+    NSArray *toUse;
+    
+    if( [defaults boolForKey:@"settings_playSongs"] == YES && 
+        [defaults boolForKey:@"settings_playHooks"] == YES ){
+        toUse = [delegate.powerSongs arrayByAddingObjectsFromArray:delegate.powerHooks];
+
+    }else if( [defaults boolForKey:@"settings_playSongs"] == YES ){
+        toUse = [NSArray arrayWithArray:delegate.powerSongs];
+
+    }else if( [defaults boolForKey:@"settings_playHooks"] == YES ){
+        toUse = [NSArray arrayWithArray:delegate.powerHooks];
+        
+    }else{
+        // NEITHER SELECTED //
+        [self trackDone];
+        [self scrollText:@"Neither SONGS nor HOOKS selected"];
+        return;
+    }
+             
+    
+    if( [toUse count] == 0 ){
+        [self scrollText:@"No tracks available."];
         return;
     }
     
-    self.songIndex = arc4random() % [delegate.powerHooks count];
+    self.songIndex = arc4random() % [toUse count];
 
-    [[delegate.powerHooks objectAtIndex:self.songIndex] setObject:@"80.0" forKey:@"stop"];
+//    [[toUse objectAtIndex:self.songIndex] setObject:@"80.0" forKey:@"stop"];
     // HOOK // TODO: Make this return BOOL
 
-    [delegate playSong:[delegate.powerHooks objectAtIndex:self.songIndex] onComplete:^{
+    [delegate playSong:[toUse objectAtIndex:self.songIndex] onComplete:^{
         NSLog(@"IN ONCOMPLETE CALLBACK with SELF ==");
     
     }];  
@@ -181,7 +203,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     
     // SONG
     
-    NSString *powerSongString = [[NSString alloc]initWithFormat:@"%@ - %@",[[delegate.powerHooks objectAtIndex:self.songIndex] objectForKey:@"artist"], [[delegate.powerHooks objectAtIndex:self.songIndex] objectForKey:@"title"]];
+    NSString *powerSongString = [[NSString alloc]initWithFormat:@"%@ - %@",[[toUse objectAtIndex:self.songIndex] objectForKey:@"artist"], [[toUse objectAtIndex:self.songIndex] objectForKey:@"title"]];
     [self scrollText:powerSongString];
     
 
