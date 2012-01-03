@@ -54,6 +54,11 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     self.songLabel.text = @"PR Pod";
     self.songIndex = -1; // not playing
     [self.songLabel setFont:[UIFont fontWithName:@"DS-Digital-Bold" size:30.0]];
+    // powerPodController
+    
+    PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    [delegate setPowerPodController:self];
+    
 }
 
 - (void)viewDidUnload
@@ -132,10 +137,18 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     if( self.songIndex == -1 ){
         [self playTrack];
     }else{
-        self.songIndex = -1;
-        self.songLabel.text = @"";
-        [delegate.player stop];
+        [self trackDone];
     }
+}
+
+
+
+- (void)trackDone {
+    PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    self.songIndex = -1;
+    [delegate.player stop];
+    [delegate.timer invalidate];    
+    [self scrollText:@""];
 }
 
 - (void)playTrack {
@@ -149,7 +162,17 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     
     self.songIndex = arc4random() % [delegate.powerHooks count];
 
-    [delegate playSong:[delegate.powerHooks objectAtIndex:self.songIndex]];  // TODO: Make this return BOOL
+    [[delegate.powerHooks objectAtIndex:self.songIndex] setObject:@"80.0" forKey:@"stop"];
+    // HOOK // TODO: Make this return BOOL
+
+    [delegate playSong:[delegate.powerHooks objectAtIndex:self.songIndex] onComplete:^{
+        NSLog(@"IN ONCOMPLETE CALLBACK with SELF ==");
+    
+    }];  
+    
+    
+    // SONG
+    
     NSString *powerSongString = [[NSString alloc]initWithFormat:@"%@ - %@",[[delegate.powerHooks objectAtIndex:self.songIndex] objectForKey:@"artist"], [[delegate.powerHooks objectAtIndex:self.songIndex] objectForKey:@"title"]];
     [self scrollText:powerSongString];
     

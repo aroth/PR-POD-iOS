@@ -41,5 +41,6 @@
 - (void)playTrack;
 - (void)playTimer;
 - (void)scrollText:(NSString *)text;
+- (void)trackDone;
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MediaPlayer/MPMusicPlayerController.h"
+#import "PRPowerPodController.h"
 
 @interface PRAppDelegate : UIResponder <UIApplicationDelegate> {
     NSTimer *timer;
@@ -15,8 +16,10 @@
     NSMutableArray *powerSongs;
     NSMutableArray *powerHooks;
     MPMusicPlayerController *player;
+    PRPowerPodController *powerPodController;
 }
 
+@property (strong, nonatomic) PRPowerPodController *powerPodController;
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSDictionary *currentTrack;
@@ -24,6 +27,7 @@
 @property (nonatomic, strong) NSMutableArray *powerSongs;
 @property (nonatomic, strong) NSMutableArray *powerHooks;
 
-- (void) playSong:(NSDictionary *)song;
+- (void) playSong:(NSDictionary *)song onComplete:(void (^)(void))block;
+- (void) processHook:(void (^)(void))block;
 
 @end

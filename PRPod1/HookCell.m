@@ -32,7 +32,7 @@
 
 - (IBAction)pressPlay:(id)sender {
     PRAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    [appDelegate playSong:self.song];
+    [appDelegate playSong:self.song onComplete:nil];
 }
 
 @end

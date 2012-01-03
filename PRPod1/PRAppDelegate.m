@@ -11,7 +11,7 @@
 @implementation PRAppDelegate
 
 @synthesize window = _window;
-@synthesize powerSongs, powerHooks, player, timer, currentTrack;
+@synthesize powerSongs, powerHooks, player, timer, currentTrack, powerPodController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -96,8 +96,7 @@
 }
 
 
-- (void) playSong:(NSDictionary *)song {
- 
+- (void) playSong:(NSDictionary *)song onComplete:(void (^)(void))block { 
     
     MPMediaQuery *query = [MPMediaQuery songsQuery];   
     
@@ -114,11 +113,24 @@
         // HOOK
         [self.player setCurrentPlaybackTime:[[song objectForKey:@"start"] floatValue]];
                 
-        self.timer = [NSTimer scheduledTimerWithTimeInterval: 0.5
-                                                 target: self
-                                               selector: @selector(processHook)
-                                               userInfo: nil
-                                                repeats: YES];
+        SEL sel = @selector(processHook:);
+        
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:sel]];
+        [invocation setTarget:self];
+        [invocation setSelector:sel];
+        [invocation setArgument:&block atIndex:2];
+        
+        NSLog(@"BLOCK = =%@", block);
+        
+      //  [invocation performSelector:@selector(processHook:) withObject:block afterDelay:0.5];
+        //        
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5f invocation:invocation repeats:YES];
+
+//        self.timer = [NSTimer scheduledTimerWithTimeInterval: 0.5
+//                                                 target: self
+//                                                    invocation: invocation
+//                                               userInfo: block
+//                                                repeats: YES];
     }else{
         // SONG
         [self.player setCurrentPlaybackTime:0.0];
@@ -131,13 +143,25 @@
 
 
 
-- (void) processHook {
+- (void) processHook:(void (^)(void))block {
     if( [self.currentTrack objectForKey:@"stop"] != nil ){
-        //NSLog(@"FOUND HOOK %f vs %f", [self.player currentPlaybackTime], [[self.currentTrack objectForKey:@"stop"] floatValue]);
+        NSLog(@"FOUND HOOK %f vs %f", [self.player currentPlaybackTime], [[self.currentTrack objectForKey:@"stop"] floatValue]);
         if( [self.player currentPlaybackTime] > [[self.currentTrack objectForKey:@"stop"] floatValue] ){
             [self.timer invalidate];
             [self.player stop];
             // TODO: UPDATE SCROLL TEXT.... 
+           // if( [theTimer userInfo] ){
+            if( block != nil ){
+                NSLog(@"DONE, NOW CALL BLOCK!! == %@", block);
+                block();
+            }
+            
+            if( self.powerPodController != nil ){
+                NSLog(@"HERE WITH OBJ %@", self.powerPodController);
+                [self.powerPodController trackDone];
+            }
+            
+            // }
             NSLog(@"HOOK DONE!!");
         }
     }
