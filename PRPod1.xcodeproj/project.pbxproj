@@ -47,6 +47,10 @@
 		E30B84C514AD640D00F0D315 /* app_icon_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = E30B84C414AD640D00F0D315 /* app_icon_57x57.png */; };
 		E30B84C714AD641400F0D315 /* app_icon_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = E30B84C614AD641400F0D315 /* app_icon_114x114.png */; };
 		E30B84C914AD646000F0D315 /* pr_button.png in Resources */ = {isa = PBXBuildFile; fileRef = E30B84C814AD646000F0D315 /* pr_button.png */; };
+		E313E32D14B3644B008032DD /* hook_off.png in Resources */ = {isa = PBXBuildFile; fileRef = E313E32914B3644B008032DD /* hook_off.png */; };
+		E313E32F14B3644B008032DD /* song_off.png in Resources */ = {isa = PBXBuildFile; fileRef = E313E32B14B3644B008032DD /* song_off.png */; };
+		E313E33714B365D8008032DD /* hook_on.png in Resources */ = {isa = PBXBuildFile; fileRef = E313E33514B365D8008032DD /* hook_on.png */; };
+		E313E33814B365D8008032DD /* song_on.png in Resources */ = {isa = PBXBuildFile; fileRef = E313E33614B365D8008032DD /* song_on.png */; };
 		E34F258514AD6D1500024E07 /* red_btn_elec.png in Resources */ = {isa = PBXBuildFile; fileRef = E34F258414AD6D1500024E07 /* red_btn_elec.png */; };
 		E34F258814AD6D8A00024E07 /* Vector-Speaker-psd15015.png in Resources */ = {isa = PBXBuildFile; fileRef = E34F258714AD6D8A00024E07 /* Vector-Speaker-psd15015.png */; };
 		E34F258A14AD6DDB00024E07 /* 1211544680.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E34F258914AD6DDB00024E07 /* 1211544680.jpeg */; };
@@ -56,6 +60,10 @@
 		E34F259314AD720D00024E07 /* PRClassicBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = E34F259214AD720D00024E07 /* PRClassicBoxController.m */; };
 		E34F259614AD76F000024E07 /* blk_left.png in Resources */ = {isa = PBXBuildFile; fileRef = E34F259414AD76F000024E07 /* blk_left.png */; };
 		E34F259714AD76F000024E07 /* blk_right.png in Resources */ = {isa = PBXBuildFile; fileRef = E34F259514AD76F000024E07 /* blk_right.png */; };
+		E37E380514B54C50008C7BC9 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E37E380414B54C50008C7BC9 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E37E380714B54C9F008C7BC9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E37E380614B54C9F008C7BC9 /* CFNetwork.framework */; };
+		E37E380D14BA8AF4008C7BC9 /* cutler_champions.wav in Resources */ = {isa = PBXBuildFile; fileRef = E37E380C14BA8AF4008C7BC9 /* cutler_champions.wav */; };
+		E37E380F14BA930F008C7BC9 /* boxing.wav in Resources */ = {isa = PBXBuildFile; fileRef = E37E380E14BA930F008C7BC9 /* boxing.wav */; };
 		E3BB59C414AE49DF003F8107 /* t_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BB59C314AE49DF003F8107 /* t_btn.png */; };
 		E3BB59C714AE4BCA003F8107 /* obtn.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BB59C614AE4BCA003F8107 /* obtn.png */; };
 		E3BB59CB14AE4F0F003F8107 /* 1_led_green.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BB59C814AE4F0F003F8107 /* 1_led_green.png */; };
@@ -70,6 +78,9 @@
 		E3BB59DB14AE5BE3003F8107 /* 61-brightness.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BB59DA14AE5BE3003F8107 /* 61-brightness.png */; };
 		E3BB59E214AF9408003F8107 /* PRHookEditorController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BB59E114AF9408003F8107 /* PRHookEditorController.m */; };
 		E3BB59E514AFA9CE003F8107 /* PRPowerHooksController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BB59E414AFA9CE003F8107 /* PRPowerHooksController.m */; };
+		E3BF4C8F14C6104600733D3A /* oldspice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E3BF4C8E14C6104600733D3A /* oldspice.mp3 */; };
+		E3BF4C9214C6104600733D3A /* old_spice.wav in Resources */ = {isa = PBXBuildFile; fileRef = E3BF4C9114C6104600733D3A /* old_spice.wav */; };
+		E3BF4C9414C6104600733D3A /* sun_power.wav in Resources */ = {isa = PBXBuildFile; fileRef = E3BF4C9314C6104600733D3A /* sun_power.wav */; };
 		E3CF985E14B1373C009D77C4 /* PowersongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CF985D14B1373C009D77C4 /* PowersongCell.m */; };
 		E3CF986214B1427B009D77C4 /* HookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CF986114B1427B009D77C4 /* HookCell.m */; };
 		E3CF987214B146F3009D77C4 /* NSDictionary+Song.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CF987114B146F3009D77C4 /* NSDictionary+Song.m */; };
@@ -141,6 +152,10 @@
 		E30B84C414AD640D00F0D315 /* app_icon_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon_57x57.png; path = ../app_icon_57x57.png; sourceTree = "<group>"; };
 		E30B84C614AD641400F0D315 /* app_icon_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon_114x114.png; path = ../app_icon_114x114.png; sourceTree = "<group>"; };
 		E30B84C814AD646000F0D315 /* pr_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pr_button.png; path = ../../../Desktop/pr_button.png; sourceTree = "<group>"; };
+		E313E32914B3644B008032DD /* hook_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hook_off.png; sourceTree = "<group>"; };
+		E313E32B14B3644B008032DD /* song_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = song_off.png; sourceTree = "<group>"; };
+		E313E33514B365D8008032DD /* hook_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hook_on.png; sourceTree = "<group>"; };
+		E313E33614B365D8008032DD /* song_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = song_on.png; sourceTree = "<group>"; };
 		E34F258414AD6D1500024E07 /* red_btn_elec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_btn_elec.png; sourceTree = "<group>"; };
 		E34F258714AD6D8A00024E07 /* Vector-Speaker-psd15015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Vector-Speaker-psd15015.png"; sourceTree = "<group>"; };
 		E34F258914AD6DDB00024E07 /* 1211544680.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1211544680.jpeg; sourceTree = "<group>"; };
@@ -151,6 +166,11 @@
 		E34F259214AD720D00024E07 /* PRClassicBoxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRClassicBoxController.m; sourceTree = "<group>"; };
 		E34F259414AD76F000024E07 /* blk_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blk_left.png; sourceTree = "<group>"; };
 		E34F259514AD76F000024E07 /* blk_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blk_right.png; sourceTree = "<group>"; };
+		E37E380314B54C50008C7BC9 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		E37E380414B54C50008C7BC9 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		E37E380614B54C9F008C7BC9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E37E380C14BA8AF4008C7BC9 /* cutler_champions.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = cutler_champions.wav; path = "../../../Adam/2011/PR Power Box WAVs/quotes/cutler_champions.wav"; sourceTree = "<group>"; };
+		E37E380E14BA930F008C7BC9 /* boxing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = boxing.wav; path = ../../../Downloads/boxing.wav; sourceTree = "<group>"; };
 		E3BB59C314AE49DF003F8107 /* t_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = t_btn.png; sourceTree = "<group>"; };
 		E3BB59C614AE4BCA003F8107 /* obtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = obtn.png; sourceTree = "<group>"; };
 		E3BB59C814AE4F0F003F8107 /* 1_led_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_led_green.png; sourceTree = "<group>"; };
@@ -167,6 +187,9 @@
 		E3BB59E114AF9408003F8107 /* PRHookEditorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRHookEditorController.m; sourceTree = "<group>"; };
 		E3BB59E314AFA9CD003F8107 /* PRPowerHooksController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRPowerHooksController.h; sourceTree = "<group>"; };
 		E3BB59E414AFA9CE003F8107 /* PRPowerHooksController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRPowerHooksController.m; sourceTree = "<group>"; };
+		E3BF4C8E14C6104600733D3A /* oldspice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oldspice.mp3; sourceTree = "<group>"; };
+		E3BF4C9114C6104600733D3A /* old_spice.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = old_spice.wav; sourceTree = "<group>"; };
+		E3BF4C9314C6104600733D3A /* sun_power.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sun_power.wav; sourceTree = "<group>"; };
 		E3CF985C14B1373C009D77C4 /* PowersongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowersongCell.h; sourceTree = "<group>"; };
 		E3CF985D14B1373C009D77C4 /* PowersongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowersongCell.m; sourceTree = "<group>"; };
 		E3CF986014B1427A009D77C4 /* HookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HookCell.h; sourceTree = "<group>"; };
@@ -186,6 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E37E380714B54C9F008C7BC9 /* CFNetwork.framework in Frameworks */,
 				E30B84B714AD59D900F0D315 /* QuartzCore.framework in Frameworks */,
 				E30B84AE14AD315700F0D315 /* MediaPlayer.framework in Frameworks */,
 				E30B84AC14AD314E00F0D315 /* AVFoundation.framework in Frameworks */,
@@ -211,6 +235,7 @@
 		E30B843D14ACED8B00F0D315 = {
 			isa = PBXGroup;
 			children = (
+				E37E380614B54C9F008C7BC9 /* CFNetwork.framework */,
 				E30B845214ACED8B00F0D315 /* PRPod1 */,
 				E30B847B14ACED8B00F0D315 /* PRPod1Tests */,
 				E30B844B14ACED8B00F0D315 /* Frameworks */,
@@ -244,6 +269,12 @@
 		E30B845214ACED8B00F0D315 /* PRPod1 */ = {
 			isa = PBXGroup;
 			children = (
+				E3BF4C9314C6104600733D3A /* sun_power.wav */,
+				E3BF4C9114C6104600733D3A /* old_spice.wav */,
+				E3BF4C8E14C6104600733D3A /* oldspice.mp3 */,
+				E37E380E14BA930F008C7BC9 /* boxing.wav */,
+				E37E380C14BA8AF4008C7BC9 /* cutler_champions.wav */,
+				E37E380114B54C3B008C7BC9 /* TCP */,
 				E3CF986714B14638009D77C4 /* Categories */,
 				E3CF986314B145A8009D77C4 /* Models */,
 				E30B84B214AD378C00F0D315 /* Cells */,
@@ -296,6 +327,10 @@
 		E30B848C14ACED9E00F0D315 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E313E33514B365D8008032DD /* hook_on.png */,
+				E313E33614B365D8008032DD /* song_on.png */,
+				E313E32914B3644B008032DD /* hook_off.png */,
+				E313E32B14B3644B008032DD /* song_off.png */,
 				E3CF987914B29D41009D77C4 /* t_red_4.png */,
 				E3CF987714B29D1C009D77C4 /* T_RED_3.png */,
 				E3CF987514B29C54009D77C4 /* red_btn_2.png */,
@@ -372,6 +407,15 @@
 				E3CF986114B1427B009D77C4 /* HookCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		E37E380114B54C3B008C7BC9 /* TCP */ = {
+			isa = PBXGroup;
+			children = (
+				E37E380314B54C50008C7BC9 /* GCDAsyncSocket.h */,
+				E37E380414B54C50008C7BC9 /* GCDAsyncSocket.m */,
+			);
+			name = TCP;
 			sourceTree = "<group>";
 		};
 		E3CF986314B145A8009D77C4 /* Models */ = {
@@ -506,6 +550,15 @@
 				E3CF987614B29C54009D77C4 /* red_btn_2.png in Resources */,
 				E3CF987814B29D1C009D77C4 /* T_RED_3.png in Resources */,
 				E3CF987A14B29D42009D77C4 /* t_red_4.png in Resources */,
+				E313E32D14B3644B008032DD /* hook_off.png in Resources */,
+				E313E32F14B3644B008032DD /* song_off.png in Resources */,
+				E313E33714B365D8008032DD /* hook_on.png in Resources */,
+				E313E33814B365D8008032DD /* song_on.png in Resources */,
+				E37E380D14BA8AF4008C7BC9 /* cutler_champions.wav in Resources */,
+				E37E380F14BA930F008C7BC9 /* boxing.wav in Resources */,
+				E3BF4C8F14C6104600733D3A /* oldspice.mp3 in Resources */,
+				E3BF4C9214C6104600733D3A /* old_spice.wav in Resources */,
+				E3BF4C9414C6104600733D3A /* sun_power.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,6 +607,7 @@
 				E3CF986214B1427B009D77C4 /* HookCell.m in Sources */,
 				E3CF987214B146F3009D77C4 /* NSDictionary+Song.m in Sources */,
 				E3CF987D14B3314D009D77C4 /* PRSettingsController.m in Sources */,
+				E37E380514B54C50008C7BC9 /* GCDAsyncSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

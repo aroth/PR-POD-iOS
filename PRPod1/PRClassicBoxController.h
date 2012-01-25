@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface PRClassicBoxController : UIViewController {
     
     IBOutlet UIButton *powerButtonLeftBottom;
+    IBOutlet UILabel *timeLabel;
 }
 @property (strong, nonatomic) IBOutlet UIButton *powerButtonLeftBottom;
+
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 - (IBAction)tapPowerButtonLeftBottom:(id)sender;
 
 @end

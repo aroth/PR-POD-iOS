@@ -9,17 +9,23 @@
 #import <UIKit/UIKit.h>
 #import "MediaPlayer/MPMusicPlayerController.h"
 #import "PRPowerPodController.h"
+#import "PRSettingsController.h"
+#import "GCDAsyncSocket.h"
 
 @interface PRAppDelegate : UIResponder <UIApplicationDelegate> {
     NSTimer *timer;
+    GCDAsyncSocket *asyncSocket;
     NSDictionary *currentTrack;
     NSMutableArray *powerSongs;
     NSMutableArray *powerHooks;
     MPMusicPlayerController *player;
     PRPowerPodController *powerPodController;
+    PRSettingsController *settingsController;
 }
 
+@property (strong, nonatomic) GCDAsyncSocket *asyncSocket;
 @property (strong, nonatomic) PRPowerPodController *powerPodController;
+@property (strong, nonatomic) PRSettingsController *settingsController;
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSDictionary *currentTrack;
@@ -29,5 +35,8 @@
 
 - (void) playSong:(NSDictionary *)song onComplete:(void (^)(void))block;
 - (void) processHook:(void (^)(void))block;
+- (void) connectToRemote;
+- (void) sendRemoteData:(NSString *)stringData;
+
 
 @end

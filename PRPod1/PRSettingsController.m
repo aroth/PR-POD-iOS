@@ -7,11 +7,15 @@
 //
 
 #import "PRSettingsController.h"
+#import "PRAppDelegate.h"
 
 @implementation PRSettingsController
 @synthesize playContinuousSwitch;
 @synthesize playSongsSwitch;
 @synthesize playHooksSwitch;
+@synthesize remoteIPTextField;
+@synthesize remoteStatus;
+@synthesize remoteButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,8 +73,28 @@
     }else{
         self.playHooksSwitch.on = NO;
     }
+
+    [self adjustConnectionStatus];
+
+    
+    self.remoteIPTextField.text = [defaults stringForKey:@"settings_remoteHost"];
 }
 
+
+- (void)adjustConnectionStatus  {
+    PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+
+    NSString *connectedString;
+    if( [delegate.asyncSocket isConnected] ){
+        connectedString = @"connected";
+        //[self.remoteButton.titleLabel setText:@"Disconnect"];
+       // self.remoteButton.titleLabel.text = @"Disconnect";
+    }else{
+        connectedString = @"disconnected";
+       // self.remoteButton.titleLabel.text = @"Connect";         
+    }
+    self.remoteStatus.text = [NSString stringWithFormat:@"%@", connectedString]; 
+}
 
 - (IBAction)toggleSetting:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -82,7 +106,20 @@
     
     [defaults setObject:@"XXX" forKey:@"adam_test"]; 
     [[NSUserDefaults standardUserDefaults] synchronize];
-    NSLog(@"SAVED SETTINGS: %@", defaults);
+}
+
+- (IBAction)tapRemoteButton:(id)sender {
+    PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    delegate.settingsController = self;
+    
+    if( [delegate.asyncSocket isConnected] ){
+        NSLog(@"disconnecting...");
+        [delegate.asyncSocket disconnect];
+    }else{
+        NSLog(@"connecting...");
+        [delegate.asyncSocket disconnect];
+        [delegate connectToRemote];
+    }
 }
 
 
@@ -94,6 +131,12 @@
     [self setPlaySongsSwitch:nil];
     playHooksSwitch = nil;
     [self setPlayHooksSwitch:nil];
+    remoteIPTextField = nil;
+    [self setRemoteIPTextField:nil];
+    remoteStatus = nil;
+    [self setRemoteStatus:nil];
+    remoteButton = nil;
+    [self setRemoteButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

@@ -11,7 +11,7 @@
 @implementation PRAppDelegate
 
 @synthesize window = _window;
-@synthesize powerSongs, powerHooks, player, timer, currentTrack, powerPodController;
+@synthesize powerSongs, powerHooks, player, timer, currentTrack, powerPodController, settingsController, asyncSocket;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -32,18 +32,19 @@
     
     // Settings
     if( [defaults objectForKey:@"settings_playContinuous"] == nil ){
-        NSLog(@"DEF1");
         [defaults setBool:NO forKey:@"settings_playContinuous"];
     }
     if( [defaults objectForKey:@"settings_playSongs"] == nil ){
-        NSLog(@"DEF2");
         [defaults setBool:YES forKey:@"settings_playSongs"];
     }
     if( [defaults objectForKey:@"settings_playHooks"] == nil ){
-        NSLog(@"DEF3");
         [defaults setBool:NO forKey:@"settings_playHooks"];
     }
+    if( [defaults objectForKey:@"settings_remoteHost"] == nil ){
+        [defaults setObject:@"192.168.3.13" forKey:@"settings_remoteHost"];
+    }
 
+    settingsController = nil;
     [defaults synchronize];
 
     self.powerSongs = [[NSMutableArray alloc]initWithArray:[defaults arrayForKey:@"powerSongs"]];
@@ -51,7 +52,86 @@
     
     [self.player stop];
     
+    // Socket //
+    dispatch_queue_t mainQueue = dispatch_get_main_queue();
+    asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:mainQueue];    
+    [self connectToRemote];
+    
     return YES;
+}
+
+- (void)connectToRemote {
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *host = [defaults stringForKey:@"settings_remoteHost"];
+    uint16_t port = 777;
+    
+    NSError *error = nil;
+    if (![asyncSocket connectToHost:host onPort:port error:&error])
+    {
+        NSLog(@"Error connecting: %@", error);
+    }
+    
+    [self sendRemoteData:@"HELLO"];
+    [asyncSocket readDataWithTimeout:-1 tag:0];
+}
+
+
+- (void)socket:(GCDAsyncSocket *)sender didConnectToHost:(NSString *)host port:(uint16_t)port {
+    NSLog(@"CONNECTED TO HOST!");
+    if( self.settingsController ){
+        [self.settingsController adjustConnectionStatus];
+    }
+}
+
+
+- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)error {
+    NSLog(@"CONNECTION DROPPED");
+    if( self.settingsController ){
+        [self.settingsController adjustConnectionStatus];
+    }
+
+}
+
+- (void)socket:(GCDAsyncSocket *)sender didReadData:(NSData *)data withTag:(long)tag
+{
+ //   PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    NSString *content = [[NSString alloc] initWithData:data
+                                              encoding:NSUTF8StringEncoding];                     
+    if( [data length] > 1 ){
+        //  self.timeLabel.text = content;
+        
+        NSLog(@"RECV [%@]", content);
+        if( [content hasPrefix:@"PLAY"] ){
+            [self.powerPodController playTrack];
+        }else if( [content hasPrefix:@"SONGS"] ){
+            [defaults setBool:NO forKey:@"settings_playHooks"];
+            [defaults setBool:YES forKey:@"settings_playSongs"];
+            [self.settingsController.playHooksSwitch setOn:NO];
+            [self.settingsController.playSongsSwitch setOn:YES];
+
+        
+        }else if( [content hasPrefix:@"HOOKS"] ){
+            [defaults setBool:YES forKey:@"settings_playHooks"];
+            [defaults setBool:NO forKey:@"settings_playSongs"]; 
+            if( self.settingsController ){
+                [self.settingsController.playHooksSwitch setOn:YES];
+                [self.settingsController.playSongsSwitch setOn:NO];
+
+            }
+        
+        }else if( [content hasPrefix:@"POWER"] ){
+            [self.powerPodController prAction];
+        
+        }
+    
+    }
+    
+    [asyncSocket readDataWithTimeout:-1 tag:0];
+    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -64,6 +144,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    [self.asyncSocket disconnect];
     [[NSUserDefaults standardUserDefaults] synchronize];
     /*
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
@@ -80,6 +161,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    [self connectToRemote];
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
@@ -87,6 +169,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+     [self.asyncSocket disconnect];
      [[NSUserDefaults standardUserDefaults] synchronize];
     /*
      Called when the application is about to terminate.
@@ -103,12 +186,14 @@
     [self.timer invalidate];
     [self setCurrentTrack:song];
     
-    
     [query addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:[song objectForKey:@"persistentID"] forProperty:MPMediaItemPropertyPersistentID comparisonType:MPMediaPredicateComparisonEqualTo]];
     [query setGroupingType:MPMediaGroupingTitle];
  
     [self.player setQueueWithItemCollection:[[MPMediaItemCollection alloc] initWithItems:[NSArray arrayWithObject:[query.items objectAtIndex:0]]]];
     
+    NSString* str= [NSString stringWithString: [NSString stringWithFormat:@"%@|%@",[song objectForKey:@"artist"], [song objectForKey:@"title"]] ];
+    [self sendRemoteData:str];
+
     if( [song objectForKey:@"start"] != nil ){
         // HOOK
         [self.player setCurrentPlaybackTime:[[song objectForKey:@"start"] floatValue]];
@@ -141,6 +226,14 @@
     
 }
 
+- (void) sendRemoteData:(NSString *)stringData {
+   // queued writes
+  //   if( [self.asyncSocket isConnected] ){
+        NSLog(@"SENDING REMOTE DATA: %@", stringData);
+        NSData* data=[[NSString stringWithFormat:@"%@\n",stringData] dataUsingEncoding:NSUTF8StringEncoding];
+        [asyncSocket writeData:data withTimeout:-1 tag:1];    
+ //   }
+}
 
 
 - (void) processHook:(void (^)(void))block {

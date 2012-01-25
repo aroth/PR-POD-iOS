@@ -8,14 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <AVFoundation/AVAudioPlayer.h>
+#import <AVFoundation/AVAudioSession.h>
 
-@interface PRPowerPodController : UIViewController {
+@interface PRPowerPodController : UIViewController <AVAudioPlayerDelegate> {
     IBOutlet UIButton *powerButton;
     IBOutlet UILabel *songLabel;
+    IBOutlet UIImageView *songLED;
 
+    IBOutlet UIImageView *hookLED;
     IBOutlet UIImageView *bgImage;
     IBOutlet UIImageView *bgLeft;
     IBOutlet UIImageView *bgRight;
+    
+    AVAudioPlayer *audioPlayer;
     
     IBOutlet UIView *buttonView;
     IBOutlet UILabel *block;
@@ -24,9 +30,13 @@
     IBOutlet UILongPressGestureRecognizer *grec;
 }
 
+@property (strong, nonatomic) IBOutlet AVAudioPlayer *audioPlayer;
+
 @property (strong, nonatomic) IBOutlet UIButton *powerButton;
 @property (strong, nonatomic) IBOutlet UILabel *songLabel;
 @property (strong, nonatomic) IBOutlet UILabel *block;
+@property (strong, nonatomic) IBOutlet UIImageView *songLED;
+@property (strong, nonatomic) IBOutlet UIImageView *hookLED;
 
 @property (strong, nonatomic) IBOutlet UIImageView *bgImage;
 @property (strong, nonatomic) IBOutlet UIImageView *bgRight;
@@ -42,5 +52,6 @@
 - (void)playTimer;
 - (void)scrollText:(NSString *)text;
 - (void)trackDone;
+- (void)prAction;
 
 @end

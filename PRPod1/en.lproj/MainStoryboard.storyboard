@@ -38,14 +38,6 @@
                                 <rect key="frame" x="20" y="52" width="280" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="led_on_blue.png" id="sm4-KR-2lr">
-                                <rect key="frame" x="52" y="363" width="46" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="led_on_blue.png" id="CsK-YR-btV">
-                                <rect key="frame" x="94" y="363" width="46" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PR Pod" textAlignment="right" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" minimumFontSize="10" id="tmp-Rp-xhu">
                                 <rect key="frame" x="293" y="51" width="251" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -75,6 +67,36 @@
                                 </state>
                                 <connections>
                                     <segue destination="HJz-f5-U7h" kind="modal" id="0hs-Qt-Qdx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Bny-kA-dGC">
+                                <rect key="frame" x="105" y="363" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="led_on_blue.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ringBell:" destination="2" eventType="touchUpInside" id="0es-EW-TUa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LFB-bz-Yzn">
+                                <rect key="frame" x="63" y="363" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="led_on_blue.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dispenseChalk:" destination="2" eventType="touchUpInside" id="ac0-Ny-J5L"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="La3-BW-2OF">
@@ -107,6 +129,14 @@
                                     <action selector="changeTheme2:" destination="2" eventType="touchUpInside" id="xc0-Y7-gWk"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="song_off.png" id="Y56-zM-iaR">
+                                <rect key="frame" x="16" y="95" width="43" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="hook_off.png" id="eFD-85-vXW">
+                                <rect key="frame" x="46" y="95" width="43" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -116,7 +146,9 @@
                         <outlet property="bgLeft" destination="pwn-ZU-va5" id="oAg-Uv-6l9"/>
                         <outlet property="bgRight" destination="vLx-ne-EA8" id="bOn-Ib-ZX0"/>
                         <outlet property="grec" destination="r5C-bL-BcV" id="k7N-J6-cbu"/>
+                        <outlet property="hookLED" destination="eFD-85-vXW" id="Egy-zC-jwJ"/>
                         <outlet property="powerButton" destination="2sf-IQ-ME2" id="s4j-Vm-nED"/>
+                        <outlet property="songLED" destination="Y56-zM-iaR" id="L9S-mO-cPu"/>
                         <outlet property="songLabel" destination="tmp-Rp-xhu" id="Bww-qi-bne"/>
                     </connections>
                 </viewController>
@@ -182,6 +214,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="button2:" destination="HJz-f5-U7h" eventType="touchUpInside" id="Fjn-2W-jMo"/>
                                     <action selector="touchPowerButton:" destination="2" eventType="touchUpInside" id="NQp-7z-EJP"/>
                                 </connections>
                             </button>
@@ -225,7 +258,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="734" y="-405"/>
+            <point key="canvasLocation" x="804" y="-382"/>
         </scene>
         <scene sceneID="13">
             <objects>
@@ -249,6 +282,13 @@
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Theme" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="AAX-Lk-1Ug">
                                 <rect key="frame" x="40" y="168" width="125" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Remote" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="Z2K-Z1-Zui">
+                                <rect key="frame" x="40" y="211" width="125" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -297,6 +337,33 @@
                                     <action selector="toggleSetting:" destination="3" eventType="valueChanged" id="QeQ-0h-gbK"/>
                                 </connections>
                             </switch>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="Lml-nI-rsP">
+                                <rect key="frame" x="199" y="206" width="97" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="nTE-gb-VAv">
+                                <rect key="frame" x="199" y="245" width="97" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Nrb-CF-g3l">
+                                <rect key="frame" x="199" y="284" width="97" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <state key="normal" title="Connect">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapRemoteButton:" destination="3" eventType="touchUpInside" id="wqA-0U-dph"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -305,6 +372,9 @@
                         <outlet property="playContinuousSwitch" destination="vFD-1e-7FK" id="zTC-M9-NCP"/>
                         <outlet property="playHooksSwitch" destination="1hV-zz-L09" id="4DM-wf-oUg"/>
                         <outlet property="playSongsSwitch" destination="NAd-sU-AKT" id="0Do-Xv-6o9"/>
+                        <outlet property="remoteButton" destination="Nrb-CF-g3l" id="w9W-aG-h1z"/>
+                        <outlet property="remoteIPTextField" destination="Lml-nI-rsP" id="4RL-ng-w8u"/>
+                        <outlet property="remoteStatus" destination="nTE-gb-VAv" id="lSX-5U-huF"/>
                     </connections>
                 </viewController>
             </objects>
@@ -318,15 +388,15 @@
                         <rect key="frame" x="0.0" y="44" width="320" height="387"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Van Halen" lineBreakMode="tailTruncation" minimumFontSize="10" id="fHH-dV-KWm">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Artist" lineBreakMode="tailTruncation" minimumFontSize="10" id="fHH-dV-KWm">
                                 <rect key="frame" x="20" y="17" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Right Now" lineBreakMode="tailTruncation" minimumFontSize="10" id="LlH-1S-rul">
-                                <rect key="frame" x="20" y="37" width="280" height="27"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" minimumFontSize="10" id="LlH-1S-rul">
+                                <rect key="frame" x="20" y="37" width="280" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -421,7 +491,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hUX-yM-yT6">
-                                <rect key="frame" x="17" y="220" width="87" height="37"/>
+                                <rect key="frame" x="17" y="250" width="87" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Set End">
@@ -436,17 +506,21 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="76.7" borderStyle="roundedRect" minimumFontSize="17" id="qu5-b0-0fH">
-                                <rect key="frame" x="203" y="178" width="97" height="31"/>
+                                <rect key="frame" x="203" y="178" width="94" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="138.4" borderStyle="roundedRect" minimumFontSize="17" id="ZT2-Vv-cbl">
-                                <rect key="frame" x="203" y="220" width="97" height="31"/>
+                                <rect key="frame" x="203" y="256" width="97" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
+                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="w0E-gW-8SJ">
+                                <rect key="frame" x="203" y="210" width="94" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -753,16 +827,21 @@
         <image name="blk_left.png" width="38" height="110"/>
         <image name="blk_right.png" width="37" height="114"/>
         <image name="diamond_plate.png" width="640" height="1024"/>
+        <image name="hook_off.png" width="200" height="60"/>
         <image name="led_off_blue.png" width="46" height="45"/>
         <image name="led_on_blue.png" width="46" height="45"/>
         <image name="pr_btn_elec_black.png" width="271" height="266"/>
         <image name="prbox.png" width="260" height="386"/>
         <image name="red_btn_elec.png" width="271" height="266"/>
         <image name="screen4.png" width="285" height="40"/>
+        <image name="song_off.png" width="200" height="60"/>
         <image name="speaker2.png" width="267" height="266"/>
         <image name="t_red_4.png" width="180" height="182"/>
     </resources>
     <classes>
+        <class className="AVAudioPlayer" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AVAudioPlayer.h"/>
+        </class>
         <class className="HookCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HookCell.h"/>
             <relationships>
@@ -778,6 +857,7 @@
             <relationships>
                 <relationship kind="action" name="tapPowerButtonLeftBottom:"/>
                 <relationship kind="outlet" name="powerButtonLeftBottom" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="PRHookEditorController" superclassName="UIViewController">
@@ -809,13 +889,16 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PRPowerPodController.h"/>
             <relationships>
                 <relationship kind="action" name="touchPowerButton:"/>
+                <relationship kind="outlet" name="audioPlayer" candidateClass="AVAudioPlayer"/>
                 <relationship kind="outlet" name="bgImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="bgLeft" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="bgRight" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="block" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="grec" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="outlet" name="hookLED" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="powerButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="songLED" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="songLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -828,10 +911,14 @@
         <class className="PRSettingsController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PRSettingsController.h"/>
             <relationships>
+                <relationship kind="action" name="tapRemoteButton:"/>
                 <relationship kind="action" name="toggleSetting:"/>
                 <relationship kind="outlet" name="playContinuousSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="playHooksSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="playSongsSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="remoteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="remoteIPTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="remoteStatus" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="PRSongSearchController" superclassName="UIViewController">

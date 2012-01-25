@@ -10,6 +10,7 @@
 #import "PRAppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 
+
 @implementation PRPowerPodController
 @synthesize powerButton;
 @synthesize bgImage;
@@ -20,7 +21,10 @@
 
 @synthesize songLabel;
 @synthesize block;
+@synthesize songLED;
+@synthesize hookLED;
 @synthesize songIndex, lastIndex;
+@synthesize audioPlayer;
 
 #define CATransform3DPerspective(t, x, y) (CATransform3DConcat(t, CATransform3DMake(1, 0, 0, x, 0, 1, 0, y, 0, 0, 1, 0, 0, 0, 0, 1)))
 #define CATransform3DMakePerspective(x, y) (CATransform3DPerspective(CATransform3DIdentity, x, y))
@@ -78,6 +82,10 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     [self setButtonView:nil];
     grec = nil;
     [self setGrec:nil];
+    songLED = nil;
+    [self setSongLED:nil];
+    hookLED = nil;
+    [self setHookLED:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -93,17 +101,49 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 
     [super viewWillAppear:animated];
 }
-
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    [delegate sendRemoteData:@"CONGRATS ON PR|IM PROUD OF YOU"];
+    [self playTrack];
+}
 
 - (IBAction)grec_event:(UILongPressGestureRecognizer *)gesture {
+    PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     if( gesture.state == UIGestureRecognizerStateBegan){
-        [self scrollText:@"ULTRA POWER SONG"];
+        [self prAction];
+        
     }else if( gesture.state == UIGestureRecognizerStateEnded ){
         NSLog(@"ENDED");
     }
 }
 
 
+- (void)prAction {
+    PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+
+    [self scrollText:@"PERSONAL RECORD!!"];
+    [delegate sendRemoteData:@"POWER"];
+    
+    NSURL *url = [[NSURL alloc]initFileURLWithPath:[NSString stringWithFormat:@"%@/sun_power.wav", [[NSBundle mainBundle] resourcePath]]];
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
+    
+    
+    NSError *error;
+    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    audioPlayer.numberOfLoops = 2;
+    audioPlayer.delegate = self;
+    
+    NSLog(@"PLAY THE SONG at %@!", [NSString stringWithFormat:@"%@/cutler_champions.wav", [[NSBundle mainBundle] resourcePath]]);
+    
+    if (audioPlayer == nil)
+        NSLog([error description]);
+    else
+        [audioPlayer prepareToPlay];
+        [audioPlayer play];
+}
 
 
 
@@ -132,7 +172,6 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 }
 
 - (IBAction)touchPowerButton:(id)sender {
-    PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     
     if( self.songIndex == -1 ){
         [self playTrack];
@@ -151,6 +190,11 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     if( [defaults boolForKey:@"settings_playContinuous"] == YES ){
         [self playTrack];
     }else{
+
+        self.songLED.image = [UIImage imageNamed:@"song_off"];
+        self.hookLED.image = [UIImage imageNamed:@"hook_off"];
+
+        
         self.songIndex = -1;
         [delegate.player stop];
         [delegate.timer invalidate];    
@@ -187,6 +231,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     
     if( [toUse count] == 0 ){
         [self scrollText:@"No tracks available."];
+        [delegate sendRemoteData:@"NO TRACKS|AVAILABLE"];
         return;
     }
     
@@ -195,7 +240,21 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 //    [[toUse objectAtIndex:self.songIndex] setObject:@"80.0" forKey:@"stop"];
     // HOOK // TODO: Make this return BOOL
 
-    [delegate playSong:[toUse objectAtIndex:self.songIndex] onComplete:^{
+    NSDictionary *selectedSong = [toUse objectAtIndex:self.songIndex];
+    
+    if( [selectedSong objectForKey:@"start"] != nil ){
+        // HOOK
+        self.songLED.image = [UIImage imageNamed:@"song_off"];
+        self.hookLED.image = [UIImage imageNamed:@"hook_on"];
+
+    }else{
+        // SONG
+        self.songLED.image = [UIImage imageNamed:@"song_on"];
+        self.hookLED.image = [UIImage imageNamed:@"hook_off"];
+        
+    }
+    
+    [delegate playSong:selectedSong onComplete:^{
         NSLog(@"IN ONCOMPLETE CALLBACK with SELF ==");
     
     }];  
@@ -238,20 +297,24 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 }
 
 - (void)playTimer {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
 }
+
+- (IBAction)dispenseChalk:(id)sender {
+    NSLog(@"CHALK!!");
+    PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    [delegate sendRemoteData:@"CHALK"];
+}
+
+- (IBAction)ringBell:(id)sender {
+    NSLog(@"BELL!!");
+    PRAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    [delegate sendRemoteData:@"BELL"];
+}
+
+
 - (IBAction)changeTheme:(id)sender {
     // THEME // ---------------------
     [bgImage setImage:[UIImage imageNamed:@"diamond_plate"]];
